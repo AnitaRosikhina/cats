@@ -1,0 +1,13 @@
+import { Component, OnInit } from '@angular/core';
+import { Store } from "@ngxs/store";
+
+@Component({
+  selector: 'app-cats-page',
+  templateUrl: './cats-page.component.html',
+  styleUrls: ['./cats-page.component.scss']
+})
+export class CatsPageComponent implements OnInit {
+  constructor(private store: Store) {}
+
+  ngOnInit() {}
+}
