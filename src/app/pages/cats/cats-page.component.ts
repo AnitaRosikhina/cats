@@ -15,14 +15,23 @@ export class CatsPageComponent implements OnInit {
   @Select(CatsState.breeds) breeds$!: Observable<NCats.Breed[]>;
   @Select(CatsState.cats) cats$!: Observable<NCats.Item[]>;
 
-  parameters: NCats.Request = {
+  defaultFilters: NCats.Request = {
     limit: 10,
+    breed_ids: ''
   };
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
+    this.fetchAllBreeds();
+    this.search(this.defaultFilters);
+  }
+
+  fetchAllBreeds(): void {
     this.store.dispatch(new Cats.FetchAllBreeds());
-    this.store.dispatch(new Cats.Search({...this.parameters}));
+  }
+
+  search(payload: NCats.Request): void {
+    this.store.dispatch(new Cats.Search(payload));
   }
 }

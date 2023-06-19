@@ -1,6 +1,8 @@
 <div class="cats__header">
   <app-cats-filters
+    [defaultFilters]="defaultFilters"
     [breedsList]="breeds$ | async"
+    (filter)="search($event)"
   ></app-cats-filters>
 </div>
 <div class="cats__list">
