@@ -3,6 +3,7 @@ import { Action, State, StateContext, StateToken } from '@ngxs/store';
 import { NCats } from "../interfaces/cats";
 import { CatsService } from "../services/cats.service";
 import { Cats } from "./cats.actions";
+import { tap } from "rxjs";
 
 
 export interface CatsStateModel {
@@ -21,11 +22,16 @@ const CATS_STATE_TOKEN = new StateToken<CatsStateModel>('cats');
 export class CatsState {
   constructor(private catsService: CatsService) {}
 
-  @Action(Cats.FetchAll)
-  async fetchAll(ctx: StateContext<CatsStateModel>, action: Cats.FetchAll) {
-    // const result = await this.catsService.fetchAll();
-    // ctx.setState({
-    //   cats: [...result]
-    // });
+  @Action(Cats.Search)
+  fetchAll(ctx: StateContext<CatsStateModel>, { payload }: Cats.Search) {
+    return this.catsService.search(payload).pipe(
+      tap(results => {
+        const state = ctx.getState();
+        ctx.setState({
+          ...state,
+          cats: [...results]
+        });
+      }),
+    );
   }
 }

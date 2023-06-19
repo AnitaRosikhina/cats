@@ -10,12 +10,13 @@ export class CatsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  fetchAll(): Observable<NCats.Item[]> {
+  search(payload: NCats.Request): Observable<NCats.Item[]> {
     return this.httpClient.get<NCats.Item[]>('https://api.thecatapi.com/v1/images/search', {
+      params: {...payload},
       headers: {
         'x-api-key': this.API_KEY
       }
-    })
+    });
   }
 
   fetchAllBreeds(): Observable<NCats.Breed[]> {
@@ -23,6 +24,6 @@ export class CatsService {
       headers: {
         'x-api-key': this.API_KEY
       }
-    })
+    });
   }
 }
