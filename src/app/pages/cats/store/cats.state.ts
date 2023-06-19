@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext, StateToken } from '@ngxs/store';
+import { Action, Selector, State, StateContext, StateToken } from '@ngxs/store';
 import { NCats } from "../interfaces/cats";
 import { CatsService } from "../services/cats.service";
 import { Cats } from "./cats.actions";
@@ -22,6 +22,16 @@ const CATS_STATE_TOKEN = new StateToken<CatsStateModel>('cats');
 })
 @Injectable()
 export class CatsState {
+  @Selector()
+  static breeds(state: CatsStateModel) {
+    return state.breeds;
+  }
+
+  @Selector()
+  static cats(state: CatsStateModel) {
+    return state.cats;
+  }
+
   constructor(private catsService: CatsService) {}
 
   @Action(Cats.Search)

@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Store } from "@ngxs/store";
+import { Select, Store } from "@ngxs/store";
 import { Cats } from "./store/cats.actions";
 import { NCats } from "./interfaces/cats";
+import { CatsState } from "./store/cats.state";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-cats-page',
@@ -10,6 +12,9 @@ import { NCats } from "./interfaces/cats";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CatsPageComponent implements OnInit {
+  @Select(CatsState.breeds) breeds$!: Observable<NCats.Breed[]>;
+  @Select(CatsState.cats) cats$!: Observable<NCats.Item[]>;
+
   parameters: NCats.Request = {
     limit: 10,
   };
