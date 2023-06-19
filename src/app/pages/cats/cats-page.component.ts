@@ -17,6 +17,7 @@ export class CatsPageComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
+    this.store.dispatch(new Cats.FetchAllBreeds());
     this.store.dispatch(new Cats.Search({...this.parameters}));
   }
 }

@@ -5,4 +5,8 @@ export namespace Cats {
     static readonly type = '[Cats] Search';
     constructor(public payload: NCats.Request) {}
   }
+
+  export class FetchAllBreeds {
+    static readonly type = '[Cats] Fetch All Breeds';
+  }
 }

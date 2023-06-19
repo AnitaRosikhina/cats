@@ -8,6 +8,7 @@ import { tap } from "rxjs";
 
 export interface CatsStateModel {
   cats: NCats.Item[];
+  breeds: NCats.Breed[];
 }
 
 const CATS_STATE_TOKEN = new StateToken<CatsStateModel>('cats');
@@ -15,7 +16,8 @@ const CATS_STATE_TOKEN = new StateToken<CatsStateModel>('cats');
 @State({
   name: CATS_STATE_TOKEN,
   defaults: {
-    cats: []
+    cats: [],
+    breeds: []
   }
 })
 @Injectable()
@@ -23,13 +25,26 @@ export class CatsState {
   constructor(private catsService: CatsService) {}
 
   @Action(Cats.Search)
-  fetchAll(ctx: StateContext<CatsStateModel>, { payload }: Cats.Search) {
+  search(ctx: StateContext<CatsStateModel>, { payload }: Cats.Search) {
     return this.catsService.search(payload).pipe(
       tap(results => {
         const state = ctx.getState();
         ctx.setState({
           ...state,
           cats: [...results]
+        });
+      }),
+    );
+  }
+
+  @Action(Cats.FetchAllBreeds)
+  fetchAllBreeds(ctx: StateContext<CatsStateModel>) {
+    return this.catsService.fetchAllBreeds().pipe(
+      tap(results => {
+        const state = ctx.getState();
+        ctx.setState({
+          ...state,
+          breeds: [...results]
         });
       }),
     );
