@@ -1,8 +1,10 @@
-<p>cats-page works!</p>
-
 fixed header
 <app-cats-filters
   [breedsList]="breeds$ | async"
 ></app-cats-filters>
-
+<hr>
+<app-cats-card
+  *ngFor="let cat of cats$ | async"
+  [item]="cat"
+></app-cats-card>
 item with ngfor

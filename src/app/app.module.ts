@@ -15,12 +15,15 @@ import { MatSelectModule } from "@angular/material/select";
 import { CommonModule } from "@angular/common";
 import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CatsCardComponent } from './pages/cats/components/cats-card/cats-card.component';
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
   declarations: [
     AppComponent,
     CatsPageComponent,
-    CatsFiltersComponent
+    CatsFiltersComponent,
+    CatsCardComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     // TODO: create MatModule
     MatFormFieldModule,
     MatSelectModule,
+    MatCardModule,
   ],
   providers: [
     CatsService,
