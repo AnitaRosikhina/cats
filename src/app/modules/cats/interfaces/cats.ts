@@ -13,4 +13,9 @@ export namespace NCats {
     width: number;
     height: number;
   }
+
+  export interface Breed {
+    id: string;
+    name: string;
+  }
 }
