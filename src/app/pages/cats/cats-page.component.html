@@ -1,9 +1,9 @@
-fixed header
-<app-cats-filters
-  [breedsList]="breeds$ | async"
-></app-cats-filters>
-<hr>
-<div class="cats-list">
+<div class="cats__header">
+  <app-cats-filters
+    [breedsList]="breeds$ | async"
+  ></app-cats-filters>
+</div>
+<div class="cats__list">
   <app-cats-card
     *ngFor="let cat of cats$ | async"
     [item]="cat"
