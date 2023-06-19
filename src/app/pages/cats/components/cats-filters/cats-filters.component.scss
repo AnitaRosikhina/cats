@@ -1,0 +1,9 @@
+.filters {
+  display: flex;
+  justify-content: space-between;
+
+  .mat-form-field-appearance-fill {
+    width: 50%;
+    margin: 10px;
+  }
+}

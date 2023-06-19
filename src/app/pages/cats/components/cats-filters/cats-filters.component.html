@@ -1,15 +1,17 @@
-<mat-form-field>
-  <mat-label>Breeds</mat-label>
-  <mat-select [formControl]="breeds" multiple>
-    <mat-option *ngFor="let breed of breedsList" [value]="breed.id">{{breed.name}}</mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="filters">
+  <mat-form-field>
+    <mat-label>Breeds</mat-label>
+    <mat-select [formControl]="breeds" multiple>
+      <mat-option *ngFor="let breed of breedsList" [value]="breed.id">{{breed.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Limit</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let limit of limitOptions" [value]="limit">
-      {{limit}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Limit</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let limit of limitOptions" [value]="limit">
+        {{limit}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
