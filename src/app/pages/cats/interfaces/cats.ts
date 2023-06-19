@@ -4,10 +4,6 @@ export namespace NCats {
     breed_ids: string | string[];
   }
 
-  export interface Response {
-    cats: Item[];
-  }
-
   export interface Item {
     url: string;
     width: number;
