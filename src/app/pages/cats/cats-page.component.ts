@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from "@ngxs/store";
 import { Cats } from "./store/cats.actions";
 import { NCats } from "./interfaces/cats";
@@ -6,7 +6,8 @@ import { NCats } from "./interfaces/cats";
 @Component({
   selector: 'app-cats-page',
   templateUrl: './cats-page.component.html',
-  styleUrls: ['./cats-page.component.scss']
+  styleUrls: ['./cats-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CatsPageComponent implements OnInit {
   parameters: NCats.Request = {
